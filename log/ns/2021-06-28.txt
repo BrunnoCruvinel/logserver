@@ -1,2 +1,8 @@
 Vixi, deu pau aqui 3
 Vixi, deu pau aqui 3
+[Mon Jun 28 2021 12:21:08 GMT-0300 (Horário Padrão de Brasília)] Vixi, deu pau aqui 3
+[Mon Jun 28 2021 12:21:16 GMT-0300 (Horário Padrão de Brasília)] Vixi, deu pau aqui 3
+[2021-06-28T15:21:54.278Z] Vixi, deu pau aqui 3
+[Mon Jun 28 2021 12:22:18 GMT-0300 (Horário Padrão de Brasília)] Vixi, deu pau aqui 3
+[12:22:48] Vixi, deu pau aqui 3
+[28/06/2021 12:23:37] Vixi, deu pau aqui 3

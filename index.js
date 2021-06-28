@@ -29,7 +29,7 @@ app.post('/:project', function (req, res) {
     let log = req.body.log || false
 
     if (log)
-        fs.appendFile(`./log/${project}/${date}.txt`, log + '\n', { encoding: "utf-8", mode: 0o666, flag: "a" }, (err) => {
+        fs.appendFile(`./log/${project}/${date}.txt`, `[${(new Date()).toLocaleString()}] ${log}\n`, { encoding: "utf-8", mode: 0o666, flag: "a" }, (err) => {
             if (err) throw err;
         });
 
