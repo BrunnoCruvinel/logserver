@@ -42,9 +42,25 @@ app.get('/:project/:date', function (req, res) {
     let date = req.params.date || false
     let project = req.params.project
 
-    if (date) {
+    if (project && date) {
         try {
             const file = fs.readFileSync(`./log/${project}/${date}.txt`, 'utf8')
+            res.status(200).send(file)
+        } catch (err) {
+            res.status(400).send()
+        }
+    }
+
+})
+
+app.delete('/:project/:date', function (req, res) {
+
+    let date = req.params.date || false
+    let project = req.params.project
+
+    if (project && date) {
+        try {
+            const file = fs.unlink(`./log/${project}/${date}.txt`)
             res.status(200).send(file)
         } catch (err) {
             res.status(400).send()
