@@ -8,7 +8,8 @@ app.use(express.urlencoded({ extended: true }))
 const PORT = process.env.PORT || 3000
 
 function formatDate(date) {
-        month = '' + (date.getMonth() + 1),
+
+    month = '' + (date.getMonth() + 1),
         day = '' + date.getDate(),
         year = date.getFullYear();
 
@@ -22,13 +23,12 @@ function formatDate(date) {
 }
 
 app.post('/:project', function (req, res) {
-   
-    let date = formatDate(new Date().toLocaleDateString('pt-BR'))
+    let date = new Date().toLocaleDateString('pt-BR')
     let project = req.params.project
     let log = req.body.log || false
 
     if (log)
-        fs.appendFile(`./log/${project}/${date}.txt`, `[${(new Date()).toLocaleString()}] ${log}\n`, { encoding: "utf-8", mode: 0o666, flag: "a" }, (err) => {
+        fs.appendFile(`./log/${project}/${date.replace(/\//g, '-')}.txt`, `[${(new Date()).toLocaleString()}] ${log}\n`, { encoding: "utf-8", mode: 0o666, flag: "a" }, (err) => {
             if (err) throw err;
         });
 
@@ -43,7 +43,6 @@ app.get('/:project/:date', function (req, res) {
     let project = req.params.project
 
     if (date) {
-        date = date.split("-").reverse().join("-")
         try {
             const file = fs.readFileSync(`./log/${project}/${date}.txt`, 'utf8')
             res.status(200).send(file)
