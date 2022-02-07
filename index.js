@@ -8,10 +8,9 @@ app.use(express.urlencoded({ extended: true }))
 const PORT = process.env.PORT || 3000
 
 function formatDate(date) {
-    var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
+        month = '' + (date.getMonth() + 1),
+        day = '' + date.getDate(),
+        year = date.getFullYear();
 
     if (month.length < 2)
         month = '0' + month;
@@ -23,7 +22,7 @@ function formatDate(date) {
 }
 
 app.post('/:project', function (req, res) {
-
+   
     let date = formatDate(new Date().toLocaleDateString('pt-BR'))
     let project = req.params.project
     let log = req.body.log || false
