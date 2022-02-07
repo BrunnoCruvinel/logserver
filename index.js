@@ -60,7 +60,7 @@ app.delete('/:project/:date', function (req, res) {
 
     if (project && date) {
         try {
-            const file = fs.unlink(`./log/${project}/${date}.txt`)
+            fs.unlink(`./log/${project}/${date}.txt`)
             res.status(200).send(file)
         } catch (err) {
             res.status(400).send()
