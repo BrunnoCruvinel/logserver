@@ -24,7 +24,7 @@ function formatDate(date) {
 
 app.post('/:project', function (req, res) {
 
-    let date = formatDate(new Date())
+    let date = formatDate(new Date().toLocaleDateString('pt-BR'))
     let project = req.params.project
     let log = req.body.log || false
 
