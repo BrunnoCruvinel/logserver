@@ -29,7 +29,7 @@ app.post('/:project', function (req, res) {
     /*{ encoding: "utf-8", mode: 0o666, flag: "a+" }*/
     if (log)
         fs.appendFile(`./log/${project}/${date.toLocaleDateString('pt-BR').replace(/\//g, '-')}.txt`,
-            `[${date.toLocaleDateString('pt-BR') + ' - ' + date.getHours() + ':' + date.getMinutes()}] ${log}\n`, { encoding: "utf-8", mode: 0o666, flag: "a+" }
+            `[${date.toLocaleDateString('pt-BR') + ' - ' + date.toLocaleTimeString()}] ${log}\n`, { encoding: "utf-8", mode: 0o666, flag: "a+" }
             , function (err) {
                 if (err) { console.log(err) };
                 return;
