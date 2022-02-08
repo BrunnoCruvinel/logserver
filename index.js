@@ -28,10 +28,12 @@ app.post('/:project', function (req, res) {
     let log = req.body.log || false
     /*{ encoding: "utf-8", mode: 0o666, flag: "a+" }*/
     if (log)
-        fs.appendFile(`./log/${project}/${date.toLocaleDateString('pt-BR').replace(/\//g, '-')}.txt`, `[${date.toLocaleDateString('pt-BR') + ' - ' + date.getHours() + ':' + date.getMinutes()}] ${log}\n`, function (err) {
-            if (err) { console.log(err) };
-            return;
-        });
+        fs.appendFile(`./log/${project}/${date.toLocaleDateString('pt-BR').replace(/\//g, '-')}.txt`,
+            `[${date.toLocaleDateString('pt-BR') + ' - ' + date.getHours() + ':' + date.getMinutes()}] ${log}\n`, { encoding: "utf-8", mode: 0o666, flag: "a+" }
+            , function (err) {
+                if (err) { console.log(err) };
+                return;
+            });
 
     res.status(200).json(req.body)
 
