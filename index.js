@@ -26,11 +26,11 @@ app.post('/:project', function (req, res) {
     let date = (new Date()).toLocaleDateString('pt-BR')
     let project = req.params.project
     let log = req.body.log || false
-
+    /*{ encoding: "utf-8", mode: 0o666, flag: "a+" }*/
     if (log)
-        fs.appendFile(`./log/${project}/${date.replace(/\//g, '-')}.txt`, `[${date}] ${log}\n`, (err) => {
-            if (err) throw err;
-            return
+        fs.appendFile(`./log/${project}/${date.replace(/\//g, '-')}.txt`, `[${date}] ${log}\n`, function (err) {
+            if (err) { throw err };
+            return;
         });
 
     res.status(200).json(req.body)
