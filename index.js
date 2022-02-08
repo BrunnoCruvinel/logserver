@@ -28,7 +28,7 @@ app.post('/:project', function (req, res) {
     let log = req.body.log || false
 
     if (log)
-        fs.writeFileSync(`./log/${project}/${date.replace(/\//g, '-')}.txt`, `[${(new Date()).toLocaleString()}] ${log}\n`, { encoding: "utf-8", mode: 0o666, flag: "a" }, (err) => {
+        fs.writeFileSync(`./log/${project}/${date.replace(/\//g, '-')}.txt`, `[${date}] ${log}\n`, { encoding: "utf-8", flag: "a+" }, (err) => {
             if (err) throw err;
         });
 
